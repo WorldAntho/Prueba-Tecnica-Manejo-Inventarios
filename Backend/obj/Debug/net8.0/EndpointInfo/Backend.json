@@ -1,0 +1,2190 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Sistema de Gestion de Inventarios",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Adjuntos/ver-adjuntos": {
+      "get": {
+        "tags": [
+          "Adjuntos"
+        ],
+        "parameters": [
+          {
+            "name": "Idadjuntos",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NombreArchivo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Extension",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "MimeType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "TamanioBytes",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Ruta",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdjuntosDTOIEnumerableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdjuntosDTOIEnumerableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdjuntosDTOIEnumerableResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Adjuntos/enviar-adjuntos": {
+      "post": {
+        "tags": [
+          "Adjuntos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdjuntosCommand"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdjuntosCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdjuntosCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdjuntosCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdjuntosDTOResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdjuntosDTOResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdjuntosDTOResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Adjuntos/eliminar-adjunto": {
+      "delete": {
+        "tags": [
+          "Adjuntos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteAdjuntoCommand"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteAdjuntoCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteAdjuntoCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteAdjuntoCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Categoria/ver-categorias": {
+      "get": {
+        "tags": [
+          "Categoria"
+        ],
+        "parameters": [
+          {
+            "name": "IdCategoria",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Descripcion",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Activo",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "FechaCreacion",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "FechaActualizacion",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoriasDTOIEnumerableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoriasDTOIEnumerableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoriasDTOIEnumerableResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Categoria/enviar-categoria": {
+      "post": {
+        "tags": [
+          "Categoria"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriaCommand"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriaCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriaCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriaCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoriasDTOResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoriasDTOResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoriasDTOResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Categoria/eliminar-categoria": {
+      "delete": {
+        "tags": [
+          "Categoria"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteCategoriaCommand"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteCategoriaCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteCategoriaCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteCategoriaCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/HistorialStock/ver-historial-stock": {
+      "get": {
+        "tags": [
+          "HistorialStock"
+        ],
+        "parameters": [
+          {
+            "name": "IdHistorial",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IdProducto",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "StockAnterior",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "StockNuevo",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Diferencia",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IdTransaccion",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Motivo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Fecha",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistorialStockDTOIEnumerableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistorialStockDTOIEnumerableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistorialStockDTOIEnumerableResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/HistorialStock/enviar-historial-stock": {
+      "post": {
+        "tags": [
+          "HistorialStock"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistorialStockCommand"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistorialStockCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistorialStockCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistorialStockCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistorialStockDTOResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistorialStockDTOResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistorialStockDTOResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/HistorialStock/eliminar-historial-stock": {
+      "delete": {
+        "tags": [
+          "HistorialStock"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteHistorialStockCommand"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteHistorialStockCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteHistorialStockCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteHistorialStockCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Productos/ver-productos": {
+      "get": {
+        "tags": [
+          "Productos"
+        ],
+        "parameters": [
+          {
+            "name": "IdProducto",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Descripcion",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "IdCategoria",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Idadjuntos",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Precio",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "Stock",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Activo",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "FechaCreacion",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "FechaActualizacion",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductosDTOIEnumerableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductosDTOIEnumerableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductosDTOIEnumerableResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Productos/enviar-producto": {
+      "post": {
+        "tags": [
+          "Productos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductosCommand"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductosCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductosCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductosCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductosDTOResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductosDTOResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductosDTOResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Productos/eliminar-producto": {
+      "delete": {
+        "tags": [
+          "Productos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteProductoCommand"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteProductoCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteProductoCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteProductoCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TipoTransaccion/ver-tipos-transaccion": {
+      "get": {
+        "tags": [
+          "TipoTransaccion"
+        ],
+        "parameters": [
+          {
+            "name": "IdTipoTransaccion",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Descripcion",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Activo",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TipoTransaccionDTOIEnumerableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TipoTransaccionDTOIEnumerableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TipoTransaccionDTOIEnumerableResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TipoTransaccion/enviar-tipo-transaccion": {
+      "post": {
+        "tags": [
+          "TipoTransaccion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoTransaccionCommand"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoTransaccionCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoTransaccionCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TipoTransaccionCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TipoTransaccionDTOResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TipoTransaccionDTOResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TipoTransaccionDTOResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TipoTransaccion/eliminar-tipo-transaccion": {
+      "delete": {
+        "tags": [
+          "TipoTransaccion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTipoTransaccionCommand"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTipoTransaccionCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTipoTransaccionCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTipoTransaccionCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Transacciones/ver-transacciones": {
+      "get": {
+        "tags": [
+          "Transacciones"
+        ],
+        "parameters": [
+          {
+            "name": "IdTransaccion",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Fecha",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "IdTipoTransaccion",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IdProducto",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Cantidad",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PrecioUnitario",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "PrecioTotal",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "Detalle",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroDocumento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Activo",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "FechaCreacion",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransaccionesDTOIEnumerableResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransaccionesDTOIEnumerableResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransaccionesDTOIEnumerableResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Transacciones/enviar-transaccion": {
+      "post": {
+        "tags": [
+          "Transacciones"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransaccionesCommand"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransaccionesCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransaccionesCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransaccionesCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransaccionesDTOResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransaccionesDTOResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransaccionesDTOResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Transacciones/eliminar-transaccion": {
+      "delete": {
+        "tags": [
+          "Transacciones"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTransaccionCommand"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTransaccionCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTransaccionCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTransaccionCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AdjuntosCommand": {
+        "required": [
+          "archivo"
+        ],
+        "type": "object",
+        "properties": {
+          "idadjuntos": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "archivo": {
+            "type": "string",
+            "format": "binary",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AdjuntosDTO": {
+        "type": "object",
+        "properties": {
+          "idadjuntos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombreArchivo": {
+            "type": "string",
+            "nullable": true
+          },
+          "extension": {
+            "type": "string",
+            "nullable": true
+          },
+          "mimeType": {
+            "type": "string",
+            "nullable": true
+          },
+          "tamanioBytes": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "ruta": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AdjuntosDTOIEnumerableResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdjuntosDTO"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AdjuntosDTOResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/AdjuntosDTO"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BooleanResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "data": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CategoriaCommand": {
+        "type": "object",
+        "properties": {
+          "idCategoria": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "activo": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "fechaCreacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaActualizacion": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CategoriasDTO": {
+        "type": "object",
+        "properties": {
+          "idCategoria": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "activo": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "fechaCreacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaActualizacion": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CategoriasDTOIEnumerableResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CategoriasDTO"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CategoriasDTOResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/CategoriasDTO"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteAdjuntoCommand": {
+        "type": "object",
+        "properties": {
+          "idadjuntos": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteCategoriaCommand": {
+        "type": "object",
+        "properties": {
+          "idCategoria": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteHistorialStockCommand": {
+        "type": "object",
+        "properties": {
+          "idHistorial": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteProductoCommand": {
+        "type": "object",
+        "properties": {
+          "idProducto": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteTipoTransaccionCommand": {
+        "type": "object",
+        "properties": {
+          "idTipoTransaccion": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteTransaccionCommand": {
+        "type": "object",
+        "properties": {
+          "idTransaccion": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HistorialStockCommand": {
+        "type": "object",
+        "properties": {
+          "idHistorial": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idProducto": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "stockAnterior": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stockNuevo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "diferencia": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idTransaccion": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "motivo": {
+            "type": "string",
+            "nullable": true
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HistorialStockDTO": {
+        "type": "object",
+        "properties": {
+          "idHistorial": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idProducto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stockAnterior": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stockNuevo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "diferencia": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idTransaccion": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "motivo": {
+            "type": "string",
+            "nullable": true
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HistorialStockDTOIEnumerableResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HistorialStockDTO"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HistorialStockDTOResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/HistorialStockDTO"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HttpStatusCode": {
+        "enum": [
+          100,
+          101,
+          102,
+          103,
+          200,
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207,
+          208,
+          226,
+          300,
+          301,
+          302,
+          303,
+          304,
+          305,
+          306,
+          307,
+          308,
+          400,
+          401,
+          402,
+          403,
+          404,
+          405,
+          406,
+          407,
+          408,
+          409,
+          410,
+          411,
+          412,
+          413,
+          414,
+          415,
+          416,
+          417,
+          421,
+          422,
+          423,
+          424,
+          426,
+          428,
+          429,
+          431,
+          451,
+          500,
+          501,
+          502,
+          503,
+          504,
+          505,
+          506,
+          507,
+          508,
+          510,
+          511
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ProductosCommand": {
+        "type": "object",
+        "properties": {
+          "idProducto": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "idCategoria": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idadjuntos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "precio": {
+            "type": "number",
+            "format": "double"
+          },
+          "stock": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "activo": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "fechaCreacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaActualizacion": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductosDTO": {
+        "type": "object",
+        "properties": {
+          "idProducto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "idCategoria": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idadjuntos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "precio": {
+            "type": "number",
+            "format": "double"
+          },
+          "stock": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "activo": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "fechaCreacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaActualizacion": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductosDTOIEnumerableResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductosDTO"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductosDTOResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/ProductosDTO"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TipoTransaccionCommand": {
+        "type": "object",
+        "properties": {
+          "idTipoTransaccion": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "activo": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TipoTransaccionDTO": {
+        "type": "object",
+        "properties": {
+          "idTipoTransaccion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "activo": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TipoTransaccionDTOIEnumerableResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TipoTransaccionDTO"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TipoTransaccionDTOResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/TipoTransaccionDTO"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TransaccionesCommand": {
+        "type": "object",
+        "properties": {
+          "idTransaccion": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idTipoTransaccion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idProducto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cantidad": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "precioUnitario": {
+            "type": "number",
+            "format": "double"
+          },
+          "precioTotal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "detalle": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroDocumento": {
+            "type": "string",
+            "nullable": true
+          },
+          "activo": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "fechaCreacion": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TransaccionesDTO": {
+        "type": "object",
+        "properties": {
+          "idTransaccion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idTipoTransaccion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idProducto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cantidad": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "precioUnitario": {
+            "type": "number",
+            "format": "double"
+          },
+          "precioTotal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "detalle": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroDocumento": {
+            "type": "string",
+            "nullable": true
+          },
+          "activo": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "fechaCreacion": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TransaccionesDTOIEnumerableResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransaccionesDTO"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TransaccionesDTOResponse": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/TransaccionesDTO"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
