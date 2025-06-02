@@ -1,0 +1,144 @@
+<div class="card">
+  <div class="card-header">
+    <h2>{{ isEditMode ? 'Editar Producto' : 'Crear Producto' }}</h2>
+  </div>
+
+  <div class="card-body" *ngIf="!loading">
+    <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+      <div class="grid">
+        <div class="col-12 md:col-6">
+          <div class="field">
+            <label for="nombre">Nombre *</label>
+            <input
+              id="nombre"
+              type="text"
+              pInputText
+              formControlName="nombre"
+              [class.ng-invalid]="isFieldInvalid('nombre')"
+              placeholder="Ingrese el nombre del producto"
+              class="w-full"
+            />
+            <small class="p-error" *ngIf="isFieldInvalid('nombre')">
+              {{ getFieldError('nombre') }}
+            </small>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-6">
+          <div class="field">
+            <label for="categoria">Categoría *</label>
+            <p-dropdown
+              id="categoria"
+              [options]="categorias"
+              formControlName="idCategoria"
+              optionLabel="nombre"
+              optionValue="idCategoria"
+              placeholder="Seleccionar categoría"
+              [class.ng-invalid]="isFieldInvalid('idCategoria')"
+              class="w-full">
+            </p-dropdown>
+            <small class="p-error" *ngIf="isFieldInvalid('idCategoria')">
+              {{ getFieldError('idCategoria') }}
+            </small>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="field">
+            <label for="descripcion">Descripción</label>
+            <textarea
+              id="descripcion"
+              pInputTextarea
+              formControlName="descripcion"
+              [class.ng-invalid]="isFieldInvalid('descripcion')"
+              placeholder="Ingrese la descripción del producto"
+              rows="3"
+              class="w-full">
+            </textarea>
+            <small class="p-error" *ngIf="isFieldInvalid('descripcion')">
+              {{ getFieldError('descripcion') }}
+            </small>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-4">
+          <div class="field">
+            <label for="precio">Precio *</label>
+            <p-inputNumber
+              id="precio"
+              formControlName="precio"
+              mode="currency"
+              currency="USD"
+              locale="en-US"
+              [class.ng-invalid]="isFieldInvalid('precio')"
+              class="w-full">
+            </p-inputNumber>
+            <small class="p-error" *ngIf="isFieldInvalid('precio')">
+              {{ getFieldError('precio') }}
+            </small>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-4">
+          <div class="field">
+            <label for="stock">Stock *</label>
+            <p-inputNumber
+              id="stock"
+              formControlName="stock"
+              [showButtons]="true"
+              buttonLayout="horizontal"
+              spinnerMode="horizontal"
+              [step]="1"
+              [min]="0"
+              [class.ng-invalid]="isFieldInvalid('stock')"
+              class="w-full">
+            </p-inputNumber>
+            <small class="p-error" *ngIf="isFieldInvalid('stock')">
+              {{ getFieldError('stock') }}
+            </small>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-4">
+          <div class="field">
+            <label for="activo">Estado</label>
+            <div class="mt-2">
+              <p-inputSwitch
+                id="activo"
+                formControlName="activo">
+              </p-inputSwitch>
+              <span class="ml-2">
+                {{ productoForm.get('activo')?.value ? 'Activo' : 'Inactivo' }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex gap-2 mt-4">
+        <p-button
+          type="submit"
+          [label]="isEditMode ? 'Actualizar' : 'Crear'"
+          icon="pi pi-save"
+          [loading]="submitting"
+          styleClass="p-button-success">
+        </p-button>
+        <p-button
+          type="button"
+          label="Cancelar"
+          icon="pi pi-times"
+          (click)="onCancel()"
+          styleClass="p-button-outlined">
+        </p-button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card-body" *ngIf="loading">
+    <div class="flex justify-content-center align-items-center" style="height: 200px;">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+  </div>
+</div>
+
+<p-toast position="top-right"></p-toast>

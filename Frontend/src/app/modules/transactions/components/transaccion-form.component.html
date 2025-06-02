@@ -1,0 +1,196 @@
+<div class="card">
+  <div class="card-header">
+    <h2>{{ isEditMode ? 'Editar Transacción' : 'Crear Transacción' }}</h2>
+  </div>
+
+  <div class="card-body" *ngIf="!loading">
+    <form [formGroup]="transaccionForm" (ngSubmit)="onSubmit()">
+      <div class="grid">
+        <div class="col-12 md:col-6">
+          <div class="field">
+            <label for="fecha">Fecha *</label>
+            <p-calendar
+              id="fecha"
+              formControlName="fecha"
+              [showTime]="true"
+              hourFormat="24"
+              [class.ng-invalid]="isFieldInvalid('fecha')"
+              placeholder="Seleccionar fecha"
+              class="w-full">
+            </p-calendar>
+            <small class="p-error" *ngIf="isFieldInvalid('fecha')">
+              {{ getFieldError('fecha') }}
+            </small>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-6">
+          <div class="field">
+            <label for="numeroDocumento">Número Documento *</label>
+            <input
+              id="numeroDocumento"
+              type="text"
+              pInputText
+              formControlName="numeroDocumento"
+              [class.ng-invalid]="isFieldInvalid('numeroDocumento')"
+              placeholder="Ingrese número de documento"
+              class="w-full"
+            />
+            <small class="p-error" *ngIf="isFieldInvalid('numeroDocumento')">
+              {{ getFieldError('numeroDocumento') }}
+            </small>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-6">
+          <div class="field">
+            <label for="tipoTransaccion">Tipo Transacción *</label>
+            <p-dropdown
+              id="tipoTransaccion"
+              formControlName="idTipoTransaccion"
+              [options]="tiposTransaccion"
+              optionLabel="nombre"
+              optionValue="idTipoTransaccion"
+              [class.ng-invalid]="isFieldInvalid('idTipoTransaccion')"
+              placeholder="Seleccione tipo de transacción"
+              class="w-full">
+            </p-dropdown>
+            <small class="p-error" *ngIf="isFieldInvalid('idTipoTransaccion')">
+              {{ getFieldError('idTipoTransaccion') }}
+            </small>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-6">
+          <div class="field">
+            <label for="producto">Producto *</label>
+            <p-dropdown
+              id="producto"
+              formControlName="idProducto"
+              [options]="productos"
+              optionLabel="nombre"
+              optionValue="idProducto"
+              (onChange)="onProductChange()"
+              [class.ng-invalid]="isFieldInvalid('idProducto')"
+              placeholder="Seleccione un producto"
+              class="w-full">
+              <ng-template let-producto pTemplate="item">
+                <div>{{ producto.nombre }} (Stock: {{ producto.stock }})</div>
+              </ng-template>
+            </p-dropdown>
+            <small class="p-error" *ngIf="isFieldInvalid('idProducto')">
+              {{ getFieldError('idProducto') }}
+            </small>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-4">
+          <div class="field">
+            <label for="cantidad">Cantidad *</label>
+            <input
+              id="cantidad"
+              type="number"
+              pInputText
+              formControlName="cantidad"
+              [class.ng-invalid]="isFieldInvalid('cantidad')"
+              placeholder="Ingrese cantidad"
+              class="w-full"
+              min="1"
+            />
+            <small class="p-error" *ngIf="isFieldInvalid('cantidad')">
+              {{ getFieldError('cantidad') }}
+            </small>
+            <small *ngIf="transaccionForm.get('idProducto')?.value" class="text-sm text-gray-500">
+              Stock disponible: {{ getSelectedProductStock() }}
+            </small>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-4">
+          <div class="field">
+            <label for="precioUnitario">Precio Unitario *</label>
+            <input
+              id="precioUnitario"
+              type="number"
+              pInputText
+              formControlName="precioUnitario"
+              [class.ng-invalid]="isFieldInvalid('precioUnitario')"
+              placeholder="Ingrese precio unitario"
+              class="w-full"
+              min="0"
+              step="0.01"
+            />
+            <small class="p-error" *ngIf="isFieldInvalid('precioUnitario')">
+              {{ getFieldError('precioUnitario') }}
+            </small>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-4">
+          <div class="field">
+            <label for="precioTotal">Precio Total</label>
+            <input
+              id="precioTotal"
+              type="number"
+              pInputText
+              formControlName="precioTotal"
+              class="w-full"
+              readonly
+            />
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="field">
+            <label for="detalle">Detalle</label>
+            <textarea
+              id="detalle"
+              pInputTextarea
+              formControlName="detalle"
+              rows="3"
+              placeholder="Ingrese detalles adicionales"
+              class="w-full">
+            </textarea>
+          </div>
+        </div>
+
+        <div class="col-12" *ngIf="isEditMode">
+          <div class="field-checkbox">
+            <p-checkbox
+              id="activo"
+              formControlName="activo"
+              binary="true">
+            </p-checkbox>
+            <label for="activo">Activo</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-content-end gap-2 mt-4">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Cancelar"
+          icon="pi pi-times"
+          class="p-button-secondary"
+          (click)="onCancel()"
+          [disabled]="submitting">
+        </button>
+        <button
+          pButton
+          pRipple
+          type="submit"
+          [label]="isEditMode ? 'Actualizar' : 'Guardar'"
+          [icon]="isEditMode ? 'pi pi-check' : 'pi pi-save'"
+          [loading]="submitting"
+          [disabled]="transaccionForm.invalid || submitting">
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card-body" *ngIf="loading">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+</div>
