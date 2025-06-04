@@ -9,28 +9,8 @@ import { AxiosService } from './axios.service';
 export class ProductosService {
   constructor(private axios: AxiosService) {}
 
-  getProducts(page?: number, size?: number, filters?: any): Observable<any> {
-    const params = new URLSearchParams();
-    if (page !== undefined) params.append('page', page.toString());
-    if (size !== undefined) params.append('size', size.toString());
-    if (filters) {
-      Object.keys(filters).forEach(key => {
-        if (filters[key] !== null && filters[key] !== undefined && filters[key] !== '') {
-          params.append(key, filters[key].toString());
-        }
-      });
-    }
-
-    return from(
-      this.axios.getAxiosInstanceJSONAuth().get<IResponse<{
-        data: ProductosDTO[];
-        totalRecords: number;
-        currentPage: number;
-        totalPages: number;
-      }>>(
-        `${RutasBackend.producto.getproductos}?${params.toString()}`
-      )
-    );
+  getProducts(){
+    return from(this.axios.getAxiosInstanceJSONAuth().get<IResponse<ProductosDTO[]>>(RutasBackend.producto.getproductos));
   }
 
   getProductById(id: number): Observable<any> {

@@ -81,12 +81,12 @@ export class ProductosListComponent implements OnInit {
     const page = event ? Math.floor(event.first / event.rows) + 1 : 1;
     const size = event ? event.rows : this.rows;
 
-    this.productosService.getProducts(page, size, this.filters).subscribe({
+    this.productosService.getProducts().subscribe({
       next: (response) => {
         this.loading = false;
         if (response.data.isSuccess) {
-          this.productos = response.data.data.data;
-          this.totalRecords = response.data.data.totalRecords;
+          this.productos = response.data.data;
+          console.log('Productos cargados:', this.productos);
         } else {
           this.messageService.add({
             severity: 'error',

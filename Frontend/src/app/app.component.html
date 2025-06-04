@@ -1,1 +1,22 @@
-    <router-outlet></router-outlet>
+<div class="layout-wrapper">
+  <div class="layout-topbar bg-primary p-3 shadow-3 flex align-items-center justify-content-between">
+    <div class="layout-topbar-logo flex align-items-center">
+      <i class="pi pi-box text-2xl mr-2"></i>
+      <span class="text-xl font-bold text-white">Sistema de Inventario</span>
+    </div>
+    <div class="layout-topbar-actions">
+      <p-avatar icon="pi pi-user" styleClass="mr-2" shape="circle"></p-avatar>
+      <span class="text-white font-medium">Admin</span>
+    </div>
+  </div>
+
+  <div class="layout-sidebar bg-surface">
+    <app-menu></app-menu>
+  </div>
+
+  <div class="layout-main p-4">
+    <div class="layout-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

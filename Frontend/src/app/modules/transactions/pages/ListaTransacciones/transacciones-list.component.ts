@@ -67,7 +67,7 @@ export class TransaccionesListComponent implements OnInit {
     this.productosService.getProducts().subscribe({
       next: (response) => {
         if (response.data.isSuccess) {
-          this.productos = response.data.data.data || response.data.data;
+          this.productos = response.data.data || response.data.data;
         }
       }
     });

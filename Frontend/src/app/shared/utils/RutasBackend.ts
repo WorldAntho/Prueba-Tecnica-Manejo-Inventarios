@@ -15,9 +15,9 @@ export const RutasBackend = {
         deleteHistorialStock: '/api/HistorialStock/eliminar-historial-stock',
     },
     producto: {
-        getproductos: '/api/Producto/ver-productos',
-        postproductos: '/api/Producto/enviar-producto',
-        deleteproductos: '/api/Producto/eliminar-producto',
+        getproductos: '/api/Productos/ver-productos',
+        postproductos: '/api/Productos/enviar-producto',
+        deleteproductos: '/api/Productos/eliminar-producto',
     },
     tipoTransaccion: {
         getTipoTransacciones: '/api/TipoTransaccion/ver-tipos-transaccion',
